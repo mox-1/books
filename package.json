@@ -1,0 +1,19 @@
+{
+  "name": "books",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "load": "rm -f ./data/books && node init.js",
+    "start": "npm run load && node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chance": "^1.0.4",
+    "express": "^4.14.0",
+    "nedb": "^1.8.0",
+    "sentencer": "^0.1.5"
+  }
+}
