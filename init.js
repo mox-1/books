@@ -90,12 +90,13 @@ var createRandomInfo = function() {
         authorGender: !!gender ? "Male" : "Female",
         title: title[0].toUpperCase() + title.slice(1),
         genre: newGenre.name,
-        date: chance.date({year: 1916 + 100 * Math.random()})
+        date: chance.date({year: 1916 + 100 * Math.random()}),
+        color: chance.color({format: 'hex'})
     };
 }
 
 var books = [];
-for(var i = 0; i < 1000; i++) {
+for(var i = 0; i < 10; i++) {
     books.push(
         createRandomInfo()
     );

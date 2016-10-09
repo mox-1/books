@@ -1,0 +1,13 @@
+.slider {
+    margin: 0px 10px;
+    padding: 23px;
+    height: 500px!important;
+    background-color: #ececec;
+    display: inline-block!important;
+    border-radius: 15px;
+}
+
+.carousel-wrapper {
+    display: inline-block;
+    width: 23%;
+}

@@ -3,6 +3,7 @@ var Datastore = require('nedb'),
     db = new Datastore({filename: 'data/books', autoload: true}),
     app = express();
 
+// should take parameter that indicates from what index to begin taking 1000 books from
 app.get('/books', function(req, res, params) {
     var query = req.query,
         sortBy = {},
@@ -25,7 +26,7 @@ app.get('/books', function(req, res, params) {
     })
 });
 
-app.listen(3000, function () {
-  console.log('Books API listening on port 3000!');
+app.listen(3001, function () {
+  console.log('Books API listening on port 3001!');
 });
 

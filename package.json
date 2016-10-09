@@ -4,16 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "load": "rm -f ./data/books && node init.js",
-    "start": "npm run load && node server.js"
+    "server": "npm run load && node server.js",
+    "start": "nf start -p 3000"
   },
-  "author": "",
+  "author": "Matthew Oxley",
   "license": "ISC",
   "dependencies": {
     "chance": "^1.0.4",
     "express": "^4.14.0",
+    "foreman": "^2.0.0",
     "nedb": "^1.8.0",
-    "sentencer": "^0.1.5"
+    "react-slick": "^0.14.5",
+    "sentencer": "^0.1.5",
+    "slick-carousel": "^1.6.0",
+    "superagent": "^2.3.0"
   }
 }
