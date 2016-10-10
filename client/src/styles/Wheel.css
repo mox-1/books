@@ -1,38 +1,41 @@
 .slider {
-    padding: 32px;
-    background-color: #ececec;
+    /* important! used to override default package styling :( */
     display: inline-block!important;
     height: 520px!important;
+    padding: 32px;
     border-radius: 15px;
+    background-color: #ececec;
 }
 
 .overlay {
     position: absolute;
-    content: '';
-    background-color: #4e4e4e;
-    height: 0px;
+    height: 0;
     width: 100%;
     left: 0;
     top: 0;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
     z-index: 4;
+    background-color: #4e4e4e;
     transition: height 1s ease;
 }
 
 .wheel-wrapper {
     display: inline-block;
-    width: 20%;
     position: relative;
+    width: 20%;
     margin: 0px 4px;
+    -webkit-animation: fade-in 1s;
+    animation: fade-in 1s;
 }
 
 .label {
     position: relative;
-    font-size: 11px;
     margin: 0px auto;
     width: 110px;
     padding: 20px 0px;
+    font-size: 11px;
+    text-decoration: underline;
 }
 
 .label.all {
@@ -42,8 +45,8 @@
 .label .indicator {
     position: absolute;
     bottom: 25px;
+    left: -40px;
     font-size: 15px;
-    left: -40px
 }
 
 .slider-frame {
@@ -56,7 +59,7 @@
     right: 7px;
     border-radius: 20px;
     background-color: #fff;
-    background-image: url(/static/media/clear.63709340.png);
+    background-image: url('../../images/clear.png');
     background-size: contain;
     width: 15px;
     height: 15px;
@@ -72,3 +75,20 @@
     border-radius: 15px;
     border: 1px solid #d8d8d8;
 }
+
+@-webkit-keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+

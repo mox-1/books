@@ -7,7 +7,6 @@ app.get('/books', function(req, res, params) {
     var query = req.query,
         sortBy = {},
         q = {};
-    console.log(query);
     if (query.sortBy) {
         sortBy[query.sortBy] = query.descending ? -1 : 1;
     }
@@ -39,4 +38,3 @@ app.get('/books', function(req, res, params) {
 app.listen(3001, function () {
   console.log('Books API listening on port 3001!');
 });
-

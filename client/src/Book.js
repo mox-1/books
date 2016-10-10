@@ -1,5 +1,7 @@
+// Packages
 import React, { Component, PropTypes } from 'react';
-import './Book.css';
+// Styles
+import './styles/Book.css';
 
 class Book extends Component {
     render() {

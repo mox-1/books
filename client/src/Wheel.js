@@ -1,15 +1,17 @@
+// Packages
 import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
+import Carousel from 'nuka-carousel';
 
-import Api from './api';
+// Components + Custom
+import Api from './helpers/api';
 import Book from './Book';
 import * as Buttons from './buttons/index';
-
-import Carousel from 'nuka-carousel';
-import './Wheel.css';
 import {Categories, Values} from './constants/CategoryConstants';
+import AppConstants from './constants/AppConstants';
 
-// Accepts props relating to: sortBy and filter. when these change, reset booklist
+// Styles
+import './styles/Wheel.css';
+
 class Wheel extends Component {
     constructor(props) {
         super(props);
@@ -22,6 +24,7 @@ class Wheel extends Component {
             booksLoading: false
         }
     }
+
     _getApiUrl = () => {
         var base = '/books?';
         this.props.filters.forEach(f => {
@@ -31,6 +34,7 @@ class Wheel extends Component {
         });
         return base;
     }
+
     _getFilterString = () => {
         if (!this.props.filters.length) {
             return 'All books';
@@ -38,12 +42,13 @@ class Wheel extends Component {
             var base = 'Where ';
             this.props.filters.forEach(f => {
                 Object.keys(f).forEach(k => {
-                    base += ((base !== 'Where ')? ' AND ' : '') + Categories[k].label + ' is ' + f[k];
+                    base += ((base !== 'Where ')? ' AND ' : '') + Categories[k].label + ' is ' + (k === 'day' ? Values.day[f[k]].label : f[k]);
                 })
             });
             return base;
         }
     }
+
     _beforeSlideChange = (a, b) => {
         if (!this.state.loading && b === this.state.books.length - 3 && b < this.state.count) {
             var update = () => {
@@ -83,6 +88,7 @@ class Wheel extends Component {
             });
         })
     }
+
     render() {
         var Decorators = [
             {
@@ -105,9 +111,9 @@ class Wheel extends Component {
         ];
         var settings = {
             vertical: true,
-            slidesToShow: 3,
+            slidesToShow: AppConstants.SLIDES_TO_SHOW,
             dragging: true,
-            height: 500,
+            height: AppConstants.WHEEL_HEIGHT,
             beforeSlide: this._beforeSlideChange,
             decorators: Decorators,
         };
@@ -117,7 +123,7 @@ class Wheel extends Component {
                     {!!this.props.filters.length && <div className='indicator'>{'>'}</div>}
                 </div>
                 <div className='carousel-wrapper'>
-                    <div className='overlay' style={{height: ((this.state.currentSlide + 3) * 500) / this.state.count }}></div>
+                    <div className='overlay' style={{height: ((this.state.currentSlide + AppConstants.SLIDES_TO_SHOW) * AppConstants.WHEEL_HEIGHT) / this.state.count }}></div>
                     <Carousel {...settings}>
                         {(this.state.booksLoaded && this.state.books.map((bookData, i) => (
                             <Book data={bookData} key={i}></Book>

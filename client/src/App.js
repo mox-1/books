@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
+// Packages
+import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import {deepOrange500, lightBlue50} from 'material-ui/styles/colors';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import { Popover, FloatingActionButton, IconButton } from 'material-ui';
+import { Popover, IconButton } from 'material-ui';
+
+// Components
 import Wheel from './Wheel';
 import FilterPanel from './FilterPanel';
 
-import './App.css';
-
-const muiTheme = getMuiTheme({
-  palette: {
-    accent1Color: deepOrange500,
-  },
-});
+// Styles
+import './styles/App.css';
 
 injectTapEventPlugin();
 
@@ -22,7 +18,8 @@ class App extends Component {
         super(props);
         this.state = {
             filters: [],
-            filterPanelOpen: false
+            filterPanelOpen: false,
+            anchorEl: null
         }
     }
 
@@ -32,19 +29,21 @@ class App extends Component {
             filterPanelOpen: false
         });
     }
+
     _openFilterPanel = (event) => {
-      event.preventDefault();
-      this.setState({
-        filterPanelOpen: true,
-        anchorEl: event.currentTarget,
-      });
-    };
+        event.preventDefault();
+        this.setState({
+            filterPanelOpen: true,
+            anchorEl: event.currentTarget,
+        });
+    }
 
     _closeFilterPanel = () => {
-      this.setState({
-        filterPanelOpen: false,
-      });
-    };
+        this.setState({
+            filterPanelOpen: false,
+        });
+    }
+
     _remove = () => {
         var filters = this.state.filters.slice();
         filters.pop();
@@ -52,10 +51,11 @@ class App extends Component {
             filters: filters
         });
     }
+
     render() {
         return (
-              <div className="app">
-                <MuiThemeProvider muiTheme={muiTheme}>
+            <div className="app">
+                <MuiThemeProvider>
                     <div>
                         <div className='body-header-wrapper'>
                             <h1 className='header'>Browse books</h1>
@@ -67,11 +67,11 @@ class App extends Component {
                         </div>
                         <div className="page-wrapper">
                             <Popover
-                              open={this.state.filterPanelOpen}
-                              anchorEl={this.state.anchorEl}
-                              anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-                              targetOrigin={{horizontal: 'right', vertical: 'top'}}
-                              onRequestClose={this._closeFilterPanel}
+                                open={this.state.filterPanelOpen}
+                                anchorEl={this.state.anchorEl}
+                                anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+                                targetOrigin={{horizontal: 'right', vertical: 'top'}}
+                                onRequestClose={this._closeFilterPanel}
                             >
                                 <div className='filter-panel'>
                                     <FilterPanel addFilter={this._addFilter} existingFilters={this.state.filters}/>
