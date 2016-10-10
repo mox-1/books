@@ -1,0 +1,15 @@
+.button {
+    background-size: contain;
+    z-index: 6;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.up.button {
+    background-image: url('../../images/up.png')
+}
+
+.down.button {
+    background-image: url('../../images/down.png')
+}

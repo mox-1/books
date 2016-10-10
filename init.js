@@ -62,7 +62,7 @@ var genres = [
         schemas: [0, 5]
     },
     {
-        name: 'Self-help \/ business',
+        name: 'Self-help / business',
         schemas: [17, 18, 19, 21, 22]
     },
     {
@@ -96,10 +96,10 @@ var createRandomInfo = function() {
 }
 
 var books = [];
-for(var i = 0; i < 10; i++) {
-    books.push(
-        createRandomInfo()
-    );
+for(var i = 0; i < 100; i++) {
+    var info = createRandomInfo();
+    info.index = i;
+    books.push(info);
 }
 
 db.insert(books);
