@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "load": "rm -f ./data/books && node init.js",
-    "server": "npm run load && node server.js",
+    "install-all": "npm install && cd client && npm install && cd ..",
+    "data": "rm -f ./data/books && node init.js",
+    "server": "node server.js",
     "start": "nf start -p 3000"
   },
   "author": "Matthew Oxley",
